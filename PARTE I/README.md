@@ -55,7 +55,7 @@ docker-compose up -d
 docker exec -i postgres_db psql -U etl_user -d etl_db < db/init.sql
  ```
 
- o restaura elarchivo en un manejador de datos de preferencia ej: dBeaver
+ o restaura el archivo en un manejador de datos de preferencia ej: dBeaver
 
 # 2. Ejecutar Consultas SQL
 Para ejecutar las consultas requeridas en la prueba, utiliza el archivo queries.sql:
