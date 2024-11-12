@@ -25,7 +25,7 @@ def create_table(connection):
 def load_csv_to_db(connection, csv_file):
     with open(csv_file, 'r') as file:
         reader = csv.reader(file)
-        headers = next(reader)  # Skip the header row
+        headers = next(reader)
         rows = list(reader)
 
     with connection.cursor() as cursor:

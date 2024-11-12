@@ -1,29 +1,28 @@
 # Proyecto ETL: Datos de Empleados
 
-## Descripción
+## **Descripción**
 
-Este proyecto implementa un proceso **ETL (Extract, Transform, Load)** donde se extraen datos de un archivo **CSV**, se transforman y se cargan en una base de datos **PostgreSQL**. El proceso está automatizado con un script en Python y se utiliza **Docker Compose** para orquestar los contenedores de la base de datos y la aplicación Python.
+Este proyecto implementa un proceso **ETL (Extract, Transform, Load)** que lee datos de un archivo **CSV**, los procesa y los carga en una base de datos **PostgreSQL**. 
+
+El objetivo es mostrar cómo se pueden automatizar procesos ETL utilizando un **script en Python**. Para facilitar la configuración del entorno de desarrollo y la ejecución del script, se utilizan contenedores Docker. Los contenedores son administrados mediante **Docker Compose**.
 
 ---
 
-## Datos de Muestra
+## **Requisitos Previos**
 
-El archivo `sample_data.csv` contiene los siguientes campos:
+Asegúrate de tener instalados los siguientes programas en tu máquina:
+1. **Docker**: Herramienta para contenedores (descargar desde [Docker](https://www.docker.com/)).
+2. **Docker Compose**: Extensión para definir y ejecutar múltiples contenedores (ya incluida en Docker Desktop).
 
-| Campo              | Descripción                                   |
-|--------------------|-----------------------------------------------|
-| `nombre`           | Nombre del empleado                          |
-| `apellido`         | Apellido del empleado                        |
-| `fecha_contratacion` | Fecha de contratación                      |
-| `salario`          | Salario del empleado                         |
-| `departamento`     | Nombre del departamento                      |
+---
 
-### Ejemplo de datos:
+## **Estructura del Proyecto**
 
-```csv
-nombre,apellido,fecha_contratacion,salario,departamento
-Juan,Pérez,2020-01-15,30000,Ventas
-María,González,2019-05-20,35000,Marketing
-Carlos,Rodríguez,2021-03-10,28000,Ventas
-Ana,Martínez,2018-11-01,40000,Recursos Humanos
-Luis,Sánchez,2022-07-05,32000,Marketing
+```plaintext
+etl_project/
+├── docker-compose.yml         # Configuración de los servicios (PostgreSQL y Python)
+├── etl/
+│   ├── etl_script.py          # Script Python que ejecuta el proceso ETL
+│   ├── sample_data.csv        # Archivo CSV con los datos de ejemplo
+│   ├── requirements.txt       # Dependencias del script Python
+├── README.md                  # Instrucciones de configuración y ejecución
