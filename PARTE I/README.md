@@ -2,85 +2,92 @@
 
 ## **Descripción**
 
-Esta parte del proyecto incluye el trabajo con la base de datos PostgreSQL para realizar las siguientes actividades:
-1. Crear y poblar tablas con datos de prueba.
-2. Ejecutar consultas SQL específicas para resolver los problemas planteados.
-3. Implementar triggers e índices para mejorar la funcionalidad y rendimiento.
-4. Proporcionar un dump completo de la base de datos con todos los datos y objetos creados.
+Esta parte del proyecto consiste en trabajar con una base de datos PostgreSQL para realizar tareas específicas relacionadas con la creación, manipulación y optimización de datos. Las actividades realizadas incluyen:
+
+1. Crear la base de datos y poblarla con datos iniciales.
+2. Ejecutar consultas SQL específicas para resolver problemas planteados.
+3. Implementar triggers, índices y funciones según los requisitos.
 
 ---
 
 ## **Requisitos Previos**
 
-Asegúrate de tener los siguientes elementos configurados en tu entorno:
-1. **Docker** instalado en tu máquina. Si no lo tienes, puedes instalarlo desde [Docker](https://www.docker.com/).
-2. Contenedor PostgreSQL configurado según el archivo `docker-compose.yml`.
+1. **PostgreSQL** instalado en tu sistema. Puedes descargarlo desde [PostgreSQL Official Website](https://www.postgresql.org/).
+2. Un cliente de base de datos como:
+   - `psql` (terminal de PostgreSQL)
+   - [DBeaver](https://dbeaver.io/) (opcional para uso gráfico).
+3. Scripts del proyecto:
+   - `DATOS -init.sql` imput inicial para crear las tablas y las inserciones.
+   - `init.sql` output Dump de la base de datos **sampledata** con todos los datos y objetos creados.
+   - `queries.sql` para ejecutar las consultas requeridas despues de restaurar el dump.
 
 ---
 
 ## **Estructura de Archivos**
 
 - **`init.sql`**:
-  - Contiene los scripts SQL para:
-    - Crear las tablas necesarias (`empleados`, `departamentos`, `productos`, etc.).
-    - Insertar datos de prueba en las tablas.
-  
-- **`queries.sql`**:
-  - Incluye todas las consultas necesarias para resolver los problemas planteados:
-    - Inserciones.
-    - Actualizaciones.
-    - Consultas complejas.
-    - Implementación de triggers e índices.
+  - Contiene los scripts necesarios para:
+    - Crear las tablas requeridas (`empleados`, `productos`, `departamentos`, etc.).
+    - Insertar datos iniciales de prueba.
 
-- **`dump.sql`**:
-  - Dump completo de la base de datos PostgreSQL, que incluye:
-    - Esquema de la base de datos.
-    - Datos de las tablas.
-    - Triggers e índices.
+- **`queries.sql`**:
+  - Incluye todas las consultas necesarias para:
+    - Inserciones y actualizaciones.
+    - Implementación de triggers e índices.
+    - Consultas avanzadas y funciones.
 
 ---
 
-## **Instrucciones**
+## **Instrucciones de Instalación y Ejecución**
 
-### **1. Inicializar la Base de Datos**
-Si quieres inicializar la base de datos desde cero con las tablas y datos de prueba, utiliza el archivo `init.sql`. Sigue estos pasos:
+### **1. Crear la Base de Datos**
 
-# 1. Asegúrate de que el contenedor PostgreSQL esté corriendo:
-```bash
-docker-compose up -d
+Primero, crea una nueva base de datos llamada `sampledata`. Esto se puede hacer desde la terminal de PostgreSQL o desde un cliente gráfico como DBeaver. Si utilizas `psql`, ejecuta el siguiente comando:
+
+```sql
+CREATE DATABASE sampledata;
 ```
-## Ejecuta el script init.sql en el contenedor PostgreSQL 
- 
-```bash
-docker exec -i postgres_db psql -U etl_user -d etl_db < db/init.sql
- ```
 
- o restaura el archivo en un manejador de datos de preferencia ej: dBeaver
+### **2. Ejecutar el Script de Creación e Inserción**
+Una vez creada la base de datos, ejecuta el archivo init.sql para crear las tablas e insertar los datos iniciales. Esto se puede hacer desde la terminal o mediante un cliente gráfico.
 
-# 2. Ejecutar Consultas SQL
-Para ejecutar las consultas requeridas en la prueba, utiliza el archivo queries.sql:
-
-Ejecuta el archivo de consultas en el contenedor PostgreSQL:
+Con psql:
 
 ```bash
-docker exec -i postgres_db psql -U etl_user -d etl_db < db/queries.sql
+psql -U <usuario> -d sampledata -f init.sql
 ```
-Si prefieres ejecutar consultas manualmente, accede al contenedor PostgreSQL:
+Reemplaza <usuario> con el nombre de usuario que usas en PostgreSQL.
 
+Si usas un cliente gráfico como DBeaver, simplemente importa el archivo init.sql y ejecútalo.
+
+despúes de crear la base de datos dar clic derecho en tools o herramientas, luego execute script y en la opción imput unicar el archivo */etl_projectPARTE I/DATOS -init.sql* y luego iniciar, este archivo contiene el esquema de la base de datos y su estructura 
+
+### **3. Ejecutar las Consultas**
+Después de que las tablas y los datos estén listos, ejecuta el archivo **queries.sql** para realizar las operaciones requeridas. Esto incluye:
+
+  - Inserciones y actualizaciones.
+  - Creación de triggers.
+  - Creación de índices.
+  - Consultas avanzadas con filtros y funciones de ventana.
 
 ```bash
-docker exec -it postgres_db psql -U etl_user -d etl_db
+psql -U <usuario> -d sampledata -f queries.sql
 ```
-Luego, puedes escribir las consultas directamente en la terminal interactiva.
 
-# 3. Restaurar la Base de Datos desde un Dump
-Si prefieres cargar la base de datos completa desde el archivo dump.sql, utiliza el siguiente comando:
+Desde un cliente gráfico, abre y ejecuta el archivo queries.sql directamente.
 
-```bash
-docker exec -i postgres_db psql -U etl_user -d etl_db < db/dump.sql
-```
-## Esto restaurará:
+## Notas Adicionales
+Todos los scripts (init.sql y queries.sql) están diseñados para ser ejecutados en un entorno PostgreSQL estándar.
+Asegúrate de que tienes permisos suficientes para crear tablas, índices y funciones en la base de datos.
+Verifica los resultados de las consultas para validar su correcta ejecución.
 
-Todas las tablas.
-Datos de prueba.
-Triggers e índices.
+## Resultados Esperados
+Después de completar los pasos anteriores, deberías tener:
+
+1. Una base de datos sampledata completamente inicializada con datos de prueba.
+2. Consultas exitosas que cumplen los requisitos planteados, incluyendo:
+
+- Inserciones y actualizaciones.
+- Automatización mediante triggers.
+- Optimización mediante índices.
+- Resultados de consultas avanzadas utilizando funciones de ventana y filtros.
