@@ -23,26 +23,26 @@ Asegúrate de tener instalados los siguientes programas:
 
 Verifica tu instalación con los comandos:
 
-```
+```bash
 docker --version
 docker-compose --version
 ```
 ## Instalación y configuración
 ### 1.Clona este repositorio en tu máquina local:
 
-```
+```bash
 git clone <URL_DEL_REPOSITORIO>
 cd <NOMBRE_DEL_REPOSITORIO>
 ```
 ### 2.Construye la imagen Docker especificada en el Dockerfile:
 
-```
+```bash
 docker-compose build
 ```
 
 ### 3.Inicia los servicios definidos en el archivo docker-compose.yml:
 
-```
+```bash
 docker-compose up
 ```
 Esto iniciará el contenedor con el script ETL y cualquier servicio adicional configurado.
@@ -51,7 +51,7 @@ Esto iniciará el contenedor con el script ETL y cualquier servicio adicional co
 
 Si necesitas interactuar con el contenedor, utiliza:
 
-```
+```bash
 docker exec -it <NOMBRE_DEL_CONTENEDOR> /bin/bash
 ```
 Reemplaza <NOMBRE_DEL_CONTENEDOR> con el nombre especificado en docker-compose.yml.
@@ -63,7 +63,7 @@ Los resultados estarán disponibles en la salida del contenedor o en la base de 
 ## Detener los servicios
 Para detener y eliminar los contenedores y recursos asociados, ejecuta:
 
-```
+```bash
 docker-compose down
 ```
 Personalización
@@ -71,6 +71,6 @@ Modifica el script **etl_script.py** según las necesidades de tu proceso ETL.
 
 Actualiza las dependencias en **requirements.txt** si es necesario y reconstruye la imagen con:
 
-```
+```bash
 docker-compose build
 ```

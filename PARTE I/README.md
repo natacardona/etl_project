@@ -62,13 +62,13 @@ Para ejecutar las consultas requeridas en la prueba, utiliza el archivo queries.
 
 Ejecuta el archivo de consultas en el contenedor PostgreSQL:
 
-```
+```bash
 docker exec -i postgres_db psql -U etl_user -d etl_db < db/queries.sql
 ```
 Si prefieres ejecutar consultas manualmente, accede al contenedor PostgreSQL:
 
 
-```
+```bash
 docker exec -it postgres_db psql -U etl_user -d etl_db
 ```
 Luego, puedes escribir las consultas directamente en la terminal interactiva.
@@ -76,7 +76,7 @@ Luego, puedes escribir las consultas directamente en la terminal interactiva.
 # 3. Restaurar la Base de Datos desde un Dump
 Si prefieres cargar la base de datos completa desde el archivo dump.sql, utiliza el siguiente comando:
 
-```
+```bash
 docker exec -i postgres_db psql -U etl_user -d etl_db < db/dump.sql
 ```
 ## Esto restaurará:
