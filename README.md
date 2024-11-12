@@ -1,5 +1,5 @@
 # PRUEBA DE DATOS
 
-- **PARTE I**: [Readme File](https://github.com/natacardona/EDVai/blob/main/FinalTest/NumberOne/README.md)
-- **PARTE II**: [Readme File](https://github.com/natacardona/EDVai/blob/main/FinalTest/NumberTwo/README.md)
+- **PARTE I**: [Readme File SQL](https://github.com/natacardona/etl_project/blob/main/PARTE%20I/README.md)
+- **PARTE II**: [Readme File ETL](https://github.com/natacardona/etl_project/blob/main/PARTE%20II/etl/README.md)
 
