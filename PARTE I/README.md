@@ -46,12 +46,12 @@ Asegúrate de tener los siguientes elementos configurados en tu entorno:
 Si quieres inicializar la base de datos desde cero con las tablas y datos de prueba, utiliza el archivo `init.sql`. Sigue estos pasos:
 
 # 1. Asegúrate de que el contenedor PostgreSQL esté corriendo:
-   ```bash
-   docker-compose up -d
-    ```
+```bash
+docker-compose up -d
+```
 ## Ejecuta el script init.sql en el contenedor PostgreSQL 
  
- ```bash
+```bash
 docker exec -i postgres_db psql -U etl_user -d etl_db < db/init.sql
  ```
 
